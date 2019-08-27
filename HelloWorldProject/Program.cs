@@ -85,13 +85,47 @@ namespace HelloWorldProject {
             var average = tot / scores.Length;
             Console.WriteLine("Total, with foreach: " + average);
 
-            string instructor = "";   //"empty string"
+            string teacher = "";   //"empty string"
             //best practice:  Give your variable value right away, even if you know the value will change soon
-            instructor = "Greg";  // again, = doesn't mean equals.  Stuff on R.H. side always gets
+            teacher = "Greg";  // again, = doesn't mean equals.  Stuff on R.H. side always gets
                                   // stuffed into the thing on the L.H. side
-            Console.WriteLine(instructor);
+            Console.WriteLine(teacher);
             string lastname = "Doud";
-            Console.WriteLine(instructor + " " + lastname);
+            Console.WriteLine(teacher + " " + lastname);
+
+
+            //floating point numbers:
+            var distances = new double[] { 5.99, 3.56, 8.99, 7.47, 8.17, 6.78, 6.33, };
+            double totality = 0;    // or:  var totality = 0.0;  ensures it's a double  //Note:  doulble, not float, is the default for var, if the system has to decide.
+            foreach(var item in distances) {
+                totality += item;
+            }
+            double aver = totality / distances.Length;
+            Console.WriteLine("Average of distances: " + aver);
+
+            
+
+            //ARRAYS:
+            // can't change number of buckets. Fixed.
+            int[] students = new int[5];    // 5 buckets forever
+            students[0] = 7;
+            students[1] = 3;
+            students[2] = 4;
+            students[3] = 15;
+            students[4] = 5;
+
+            string[] names = new string[7];
+            names[0] = "Jeremy";
+            names[1] = "Alex";
+            //etc. 
+            // can even have arrays of arrays
+
+
+            // One of the primary uses of Arrays: to read data from a database (And you often don't know the amt/length in advance)
+            // So, there is a whole library of arrays that's been created, that can grow and shrink.
+
+            //students.GetValue();
+
 
             // if(boolTest = false) //this is valid, but will give unexpected, crazy results.
             // You used a single =, not ==, so you aren't testing for equality.  You're assigning
