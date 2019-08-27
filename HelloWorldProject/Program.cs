@@ -2,7 +2,7 @@
 
 namespace HelloWorldProject {
     class Program {
-        public static void XMain(string[] args) {
+        static void Main(string[] args) {
             Console.WriteLine("Hello C# Boot Camp World!");
             Console.WriteLine("At MAX Technical Training");
 
@@ -12,9 +12,78 @@ namespace HelloWorldProject {
             } else {
                 Console.WriteLine("No");
             }
+
+            // looping
+            // 1. you want to initialize index BEFORE you begin the while-loop
+            // 2. need SOME mechanism to stop the loop
+            // 3. last statement of body:  Increment the value that's going up
+            // find sum of squares:   (ans should be 55?)
+            var ints = new int[] { 1, 2, 3, 4, 5 };
+            var total = 0;  // this is an accumulator
+            //too much packed into too little
+            var index = 0;  
+            while(index < 5) {
+                // body
+                total = total + (ints[index] * ints[index]);
+                index = index + 1; // remember, = is not "equals", it is an ASSIGNMENT OPERATOR
+                //index += 1; // +=, LIKE =, IS AN ASSIGNMENT
+            }
+            Console.WriteLine("Total is " + total);  //C# will convert int to string, then contatenate
+
+            //for-loop.  More recent invention than while loop. Does same thing, but it's less error-prone
+            // for (   ;   ;   ) {  body  }
+            // for (EXECUTES THIS THE FIRST TIME ONLY ; (bool-cond), then executes body of loop  ; increment the index )  {  body  }
+            // nice thing about for-loop:  Body of loop ONLY has what the thing does.  Looks nice
+            total = 0;  // didn't need to declare again.  We're just setting the value back to 0
+            for (var idx = 0; idx < 5; idx = idx + 1) {
+                total = total + (ints[idx] * ints[idx]);
+            }
+            Console.WriteLine("With for-loop, value is " + total);
+
+            // C#:  integer division:  5/2 == 2
+            //asmt:  Compute the average of some numbers:
+            var scores = new int[] { 738, 609, 307, 959, 805, 689, 402, 972, 359, 140 };
+
+            var newTotal = 0;
+            for (int indx = 0; indx < scores.Length; indx++) {
+                newTotal = newTotal + scores[indx];
+            }
+            int avg = newTotal / scores.Length;
+            Console.WriteLine("The average of the ten integers is: " + avg);
+
+            // a while-loop is good for reading from a Db.  While read-Db() == true.
+            // so, for-loop is better for when you DO have an index.
+            // while-loop is better if you have some other condition
+
+            //  +=    -=     *=      /=      Assignment operators
+            //  myInt++   myInt--         when the increment is 1   (for addition and subtraction only)
+            //
+            //  ++myInt   --myInt    is also valid.  But be careful:  See below:
+            var a = 0;
+            var b = a++; //1. b is set to a (in this case 0 -zero-)      2. a is incremented
+
+            var apple = 0;
+            var c = ++apple; //1. apple is incremented       2. c is set to apple  (in this case 1 -one- )
+
+            // Greg sez:  Do not use single-letter variables, like i  -Too cryptic.  Don't be that guy, who's showing off.
+            // use idx instead, for instance
+
             //technically, the "if-statement" is everything including the else and its {}
             //"block".  Need to get this word in my head.  I need flashcards!  My brain is yearning 
             // for flashcards.  C'mon Justin, let's LEARN
+
+            // Okay, one more way to process this array
+            // for-each     (foreach)
+            // We use this if we want to look at each item in the collection:
+            // Greg uses this much more than the other two. We should use it any time we can.
+            // It's great, because it's hard to mess up
+            // Pro tip:  You can use the inference term "var" all the time for this structure!
+            var tot = 0;
+            foreach (var score in scores) {     //instead of score, you might say "item"
+                tot += score;
+            }
+            var average = tot / scores.Length;
+            Console.WriteLine("Total, with foreach: " + average);
 
             string instructor = "";   //"empty string"
             //best practice:  Give your variable value right away, even if you know the value will change soon
